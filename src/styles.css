@@ -1,0 +1,108 @@
+body {
+    background-color: #333333;
+}
+
+.manageButton {
+    margin: 4px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: solid #fd3;
+    background-color: #fd3;
+    font-size: 25px;
+    color: #937213;
+}
+
+.manageButton:hover {
+    border: 2px solid #ff7701;
+    color: #ff7701;
+}
+
+.manageButton:active {
+    border: #ff7701;
+    background-color: #ff7701;
+    color: #937213;
+}
+
+.noteBlock {
+    background-color: #fbdf96;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px 5px 0px;
+    padding: 3px;
+    border-radius: 10px;
+    position: relative;
+}
+
+input {
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    text-decoration: underline;
+    color: #937213;
+    font-size: x-large;
+}
+
+textarea {
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    color: #937213;
+    font-size: large;
+}
+
+.cross {
+    border-top-right-radius: 10px;
+    background-color: #fbdf96;
+    border-top: solid #fd3;
+    border-right: solid #fd3;
+    border-left: solid #fbdf96;
+    border-bottom: solid #fbdf96;
+    color: #937213;
+    font-size: x-large;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.cross:hover {
+    border-top: solid #ff7701;
+    border-right: solid #ff7701;
+    border-left: solid #fbdf96;
+    border-bottom: solid #fbdf96;
+    color: #ff7701;
+}
+
+.cross:active {
+    border: solid #ff7701;
+    background-color: #ff7701;
+    color: #937213;
+}
+
+@media screen and (orientation: portrait) {
+    body {
+        background-color: #8f0d0d;
+    }
+
+    .buttonBlock {
+        position: fixed;
+        right: 8px;
+        bottom: 8px;
+        z-index: 99999999;
+    }
+
+    .manageButton {
+        width: 180px;
+        height: 180px;
+        margin: 8px;
+    }
+
+    .noteBlock {
+        max-width: 100%;
+    }
+}
