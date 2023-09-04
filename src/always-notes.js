@@ -10,6 +10,16 @@ function AlwaysNotes() {
 
     useEffect(() => {
       readNotes().then(result => setNotes(result))
+
+      document.addEventListener("click", (event) => {
+        if (event.defaultPrevented) return
+        const oldFocused = document.getElementsByName("focused")[0]
+        if (oldFocused && ((event.target.className != "noteBlock") || (event.target.parentElement.className != "noteBlock"))) {
+            oldFocused.style["max-width"] = ""
+            oldFocused.getElementsByTagName('textarea')[0].style.height = 'auto'
+            oldFocused.removeAttribute("name")
+        }
+      })
     }, [])
 
     function addNote() {
@@ -20,6 +30,7 @@ function AlwaysNotes() {
       modNotes[index].date = index
       modNotes[index].header = "Введите заголовок"
       modNotes[index].text = "Введите текст"
+      modNotes[index].change = index
 
       setNotes(modNotes)
     }
