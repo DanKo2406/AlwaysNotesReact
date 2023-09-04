@@ -21,6 +21,25 @@ async function recordNotes(notes) {
     })
 }
 
+async function readDeletedNotes() {
+    const response = await fetch(deletedNotesUrl)
+    if (response.ok) {
+        return await response.json()
+    } else {
+        alert("Ошибка HTTP: " + response.status)
+    }
+}
+
+async function recordDeletedNotes(notes) {
+    await fetch(deletedNotesUrl, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(notes)
+    })
+}
+
 async function deleteTrash() {
     await fetch(deletedNotesUrl, {
         method: 'PUT',
@@ -30,4 +49,4 @@ async function deleteTrash() {
         body: '{}'
     })
 }
-export {readNotes, recordNotes}
+export {readNotes, recordNotes, readDeletedNotes, recordDeletedNotes, deleteTrash}

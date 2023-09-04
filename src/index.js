@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import AlwaysNotes from './always-notes';
+import {deleteTrash} from './data-exchange';
+
+window.deleteTrash = deleteTrash
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

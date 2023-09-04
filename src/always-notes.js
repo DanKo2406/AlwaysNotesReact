@@ -3,13 +3,15 @@ import {useState, useEffect} from 'react';
 import './styles.css';
 import ButtonSection from './button-section';
 import NoteSection from './note-section';
-import {readNotes, recordNotes} from './data-exchange';
+import {readNotes, recordNotes, readDeletedNotes, recordDeletedNotes} from './data-exchange';
 
 function AlwaysNotes() {
     const [notes, setNotes] = useState([])
+    const [deletedNotes, setDeletedNotes] = useState([])
 
     useEffect(() => {
       readNotes().then(result => setNotes(result))
+      readDeletedNotes().then(result => setDeletedNotes(result))
 
       document.addEventListener("click", (event) => {
         if (event.defaultPrevented) return
@@ -37,12 +39,17 @@ function AlwaysNotes() {
 
     function saveNotes() {
       recordNotes(notes)
+      recordDeletedNotes(deletedNotes)
     }
 
     function deleteNote(index) {
       let modNotes = {...notes}
+      let modDeletedNotes = {...deletedNotes}
+      modDeletedNotes[index] = {}
+      Object.assign(modDeletedNotes[index], modNotes[index])
       delete modNotes[index]
       setNotes(modNotes)
+      setDeletedNotes(modDeletedNotes)
     }
 
     function inputElement(index, elem, data) {
